@@ -19,7 +19,7 @@
             border: 1px solid rgb(255, 241, 241);
             font-weight: 400;
             margin-top: 20px;
-           
+            border: none; 
             text-align: right;
             padding-right: 10px;
             font-size: 35px;
@@ -45,8 +45,7 @@
 <div class=" flex flex-col items-center mt-2 bg-slate-200 ">
         <h1 class="font-semibold text-[36px] mb-2">Simple Calculator
         </h1>
-        <div id="result" class="box col-span-full shadow-lg">0
-        </div>
+        <textarea id="result" class="box col-span-4 shadow-lg w-[300px]">0</textarea>
         <div>
             <div class="ml-[20px] flex list-none">
                 <li class="box1 border-white border-l-1 border-t-1 " onclick="clearDis()">C</li>
@@ -114,6 +113,7 @@
         function updateDis(){
             result.innerText=calculate||"0";
         }
+        
     </script>
 </body>
 </html>
