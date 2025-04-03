@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+</head>
+<style>
+   
+   
+    .box {
+            width: 300px;
+            height:120px;
+            background-color: rgb(181, 234, 255);
+            border: 1px solid rgb(255, 241, 241);
+            font-weight: 400;
+            margin-top: 20px;
+            margin-left: 20px;
+            text-align: right;
+            padding-right: 10px;
+            font-size: 35px;
+        }
+        .box1{
+            width: 75px;
+            height: 70px;
+            font-weight: 600;
+            background-color: #46ccf9;
+            text-align: center;
+            display: flex;
+            font-size: 20px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+        .box1:hover{
+            background-color: #ccd5f1;
+        }
+</style>
+<body>
+   
+    <div class=" flex flex-col items-center mt-2">
+        <h1 class="font-semibold text-[36px] mb-2">Simple Calculator
+        </h1>
+        <div id="result" class="box col-span-full">0
+        </div>
+        <div>
+            <div class="ml-[20px] flex list-none">
+                <li class="box1 border-white border-l-1 border-t-1" onclick="clearDis()">C</li>
+                <li class="box1 border-white border-l-1 border-t-1" onclick="CalValue('+/-')">+/-</li>
+                <li class="box1 border-white border-l-1 border-t-1" onclick="CalValue('%')">%</li>
+                <li class="box1 border-white border-l-1 border-t-1" onclick="CalValue('/')">/</li>
+            </div>
+            <div class="ml-[20px] flex list-none">
+                <li class="box1 border-white border-l-1 border-t-1" onclick="CalValue('7')">7</li>
+                <li class="box1 border-white border-l-1 border-t-1" onclick="CalValue('8')">8</li>
+                <li class="box1 border-white border-l-1 border-t-1" onclick="CalValue('9')">9</li>
+                <li class="box1 border-white border-l-1 border-t-1" onclick="CalValue('*')">*</li>
+            </div>
+            <div class="ml-[20px] flex list-none">
+                <li class="box1 border-white border-l-1 border-t-1" onclick="CalValue('4')">4</li>
+                <li class="box1 border-white border-l-1 border-t-1" onclick="CalValue('5')">5</li>
+                <li class="box1 border-white border-l-1 border-t-1" onclick="CalValue('6')">6</li>
+                <li class="box1 border-white border-l-1 border-t-1" onclick="CalValue('-')">-</li>
+            </div>
+            <div class="ml-[20px] flex list-none">
+                <li class="box1 border-white border-l-1 border-t-1" onclick="CalValue('1')">1</li>
+                <li class="box1 border-white border-l-1 border-t-1" onclick="CalValue('2')">2</li>
+                <li class="box1 border-white border-l-1 border-t-1" onclick="CalValue('3')">3</li>
+                <li class="box1 border-white border-l-1 border-t-1" onclick="CalValue('+')">+</li>
+            </div>
+            <div class="ml-[20px] flex list-none">
+                <li class="box1 border-white border-l-1 border-t-1" onclick="CalValue('0')">0</li>
+                <li class="box1   border-white border-l-1 border-t-1" onclick="CalValue('.')">.</li>
+                <li class="bg-[#46ccf9] hover:bg-[#ccd5f1] font-bold flex items-center justify-center border-white  border-1  w-[150px]" onclick="calRes()">=</li>
+                
+            </div>
+        </div>
+        
+
+    </div>
+
+    <script>
+        let result = document.getElementById('result');
+        let calculate = "";
+
+        function CalValue(value){
+            if(value==='+/-'){
+                if(calculate && !isNaN(calculate)){
+                    calculate=(parseFloat(calculate)* -1).toString();
+                }
+            }
+            else{
+                calculate+=value;
+            }
+            updateDis();
+        }
+        function calRes(){
+            try{
+                calculate=eval(calculate).toString();
+            }
+            catch(error){
+                calculate="Error";
+            }
+            updateDis();
+        }
+        function clearDis(){
+            calculate="";
+            updateDis();
+        }
+        function updateDis(){
+            result.innerText=calculate||"0";
+        }
+    </script>
+</body>
+</html>
